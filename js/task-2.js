@@ -28,13 +28,17 @@ const images = [
 const galcon = document.querySelector('.gallery');
 const galimg = addgallery(images);
 
+const li =  document.createElement('li');
+galcon.append('li');
+const img = document.createElement('img');
+li.append(img);
+img.className = "imgportfoli"
+
 function addgallery(imgcol) {
   return imgcol
     .map(
       ({ alt, url }) =>
-        `<a class="gallery__item" href="${url}">
-        <img class="gallery__image" src="${url}" alt="${alt}" />
-      </a>`
+        `<img class="imgportfoli" src="${url}" alt="${alt}" /> `
     )
     .join('');
 }
@@ -43,4 +47,5 @@ function myFun(cont, razm) {
 }
 myFun(galcon, galimg);
 
-console.log(images);
+
+
