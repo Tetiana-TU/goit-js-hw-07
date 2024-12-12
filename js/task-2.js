@@ -29,16 +29,14 @@ const galcon = document.querySelector('.gallery');
 const galimg = addgallery(images);
 
 const li =  document.createElement('li');
-galcon.append('li');
+galcon.append(li);
 const img = document.createElement('img');
 li.append(img);
 img.className = "imgportfoli"
 
 function addgallery(imgcol) {
-  return imgcol
-    .map(
-      ({ alt, url }) =>
-        `<img class="imgportfoli" src="${url}" alt="${alt}" /> `
+  return imgcol.map(({ alt, url }) =>
+        `<li><img class="imgportfoli" src="${url}" alt="${alt}" </li> `
     )
     .join('');
 }
