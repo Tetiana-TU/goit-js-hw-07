@@ -3,27 +3,26 @@ function getRandomHexColor() {
     .toString(16)
     .padStart(6, 0)}`;
 }
-const numberValue = document.querySelector('input[type="number"]');
-const buttonCreate = document.querySelector('button[data-create]');
-const buttonDestroy = document.querySelector('button[data-destroy]');
+const inputnumber = document.querySelector('input[type="number"]');
+const btnCreate = document.querySelector('button[data-create]');
+const btnDestroy = document.querySelector('button[data-destroy]');
 const boxes = document.querySelector('#boxes');
 
-buttonCreate.addEventListener('click', () => {
-  const numbertype = numberValue.value;
-  const valueMax = Number(numberValue.max);
-  const valueMin = Number(numberValue.min);
-  
+btnCreate.addEventListener('click', () => {
+  const numbertype = inputnumber.value;
+  const valueMax = Number(inputnumber.max);
+  const valueMin = Number(inputnumber.min);
+
   if (numbertype >= valueMin && numbertype <= valueMax) {
     createBoxes(numbertype);
   }
-    numberValue.value = '';
+  inputnumber.value = '';
 });
 function createBoxes(numbertype) {
   boxes.innerHTML = '';
   const boxesItems = [];
   let boxSize = 30;
   for (let i = 1; i <= numbertype; i += 1) {
-
     let div = document.createElement('div');
     div.style.backgroundColor = getRandomHexColor();
     div.style.width = `${boxSize}px`;
@@ -34,7 +33,6 @@ function createBoxes(numbertype) {
   }
   boxes.append(...boxesItems);
 }
+const destroyBoxes = () => (boxes.innerHTML = '');
 
-const destroyBoxes = () => boxes.innerHTML = '';
-
-buttonDestroy.addEventListener('click', destroyBoxes);
+btnDestroy.addEventListener('click', destroyBoxes);

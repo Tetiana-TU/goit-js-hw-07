@@ -25,25 +25,13 @@ const images = [
   },
 ];
 
-const galcon = document.querySelector('.gallery');
-const galimg = addgallery(images);
+const creatGalleryCard = pictureInfo => {
+  return `<li class=gallery-item><a href="#"><img src="${pictureInfo.url}" alt="${pictureInfo.alt}"</a></li>`;
+};
+const galleryCardsArr = images
+  .map(picture => creatGalleryCard(picture))
+  .join('');
 
-const li =  document.createElement('li');
-galcon.append(li);
-const img = document.createElement('img');
-li.append(img);
-img.className = "imgportfoli"
+const galleryListEl = document.querySelector('.gallery');
 
-function addgallery(imgcol) {
-  return imgcol.map(({ alt, url }) =>
-        `<li><img class="imgportfoli" src="${url}" alt="${alt}" </li> `
-    )
-    .join('');
-}
-function myFun(cont, razm) {
-  cont.insertAdjacentHTML('beforeend', razm);
-}
-myFun(galcon, galimg);
-
-
-
+galleryListEl.innerHTML = galleryCardsArr;
